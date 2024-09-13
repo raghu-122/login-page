@@ -1,0 +1,40 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Details</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <div class="details-container">
+        <h2>Member Details</h2>
+        <p id="name"></p>
+        <p id="dob"></p>
+        <p id="registrationNumber"></p>
+        <p id="department"></p>
+        <p id="branch"></p>
+        <p id="section"></p>
+        <button onclick="goBack()">Go Back</button>
+    </div>
+    <script>
+        function goBack() {
+            window.location.href = 'index1.html';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const member = JSON.parse(localStorage.getItem('memberDetails'));
+            if (member) {
+                document.getElementById('name').textContent = `Name: ${member.name}`;
+                document.getElementById('dob').textContent = `Date of Birth: ${member.dob}`;
+                document.getElementById('registrationNumber').textContent = `Registration Number: ${member.details.registrationNumber}`;
+                document.getElementById('department').textContent = `Department: ${member.details.department}`;
+                document.getElementById('branch').textContent = `Branch: ${member.details.branch}`;
+                document.getElementById('section').textContent = `Section: ${member.details.section}`;
+            } else {
+                document.getElementById('name').textContent = 'No details found.';
+            }
+        });
+    </script>
+</body>
+</html>
